@@ -32,6 +32,10 @@ public class ProgramRun {
                         new EndLesson().timeEndSelectLesson();
                     }
                     break;
+                    case "4": {
+                        menuProgram();
+                    }
+                    break;
                     case "0": {
                         System.exit(0);
                     }
