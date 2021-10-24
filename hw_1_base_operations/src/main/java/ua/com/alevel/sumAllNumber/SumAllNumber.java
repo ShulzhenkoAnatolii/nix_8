@@ -21,7 +21,7 @@ public class SumAllNumber {
         Matcher matcher = pattern.matcher(str);
         int sum = 0;
         boolean isActive = false;
-        while(matcher.find()) {
+        while (matcher.find()) {
             sum += Integer.parseInt(matcher.group());
             isActive = true;
         }

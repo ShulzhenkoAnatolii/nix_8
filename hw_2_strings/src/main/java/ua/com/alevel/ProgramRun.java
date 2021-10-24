@@ -35,7 +35,7 @@ public class ProgramRun {
                         if (dest.isEmpty() || src.isEmpty()) {
                             System.out.println("The string or substring is empty");
                         } else {
-                            System.out.println("result: " + ReverseStringUtil.reverse(src,dest));
+                            System.out.println("result: " + ReverseStringUtil.reverse(src, dest));
                         }
                         System.out.println("Select program number 1-3, menu 4, exit 0");
                     }
@@ -48,7 +48,7 @@ public class ProgramRun {
                             int firstIndex = Integer.parseInt(reader.readLine());
                             System.out.print("Enter a lastIndex  ---> ");
                             int lastIndex = Integer.parseInt(reader.readLine());
-                            System.out.println("result: " + ReverseStringUtil.reverse(src,firstIndex,lastIndex));
+                            System.out.println("result: " + ReverseStringUtil.reverse(src, firstIndex, lastIndex));
                         } catch (NumberFormatException exception) {
                             System.out.println("Input Error, enter not a number");
                         } catch (StringIndexOutOfBoundsException exception) {
@@ -70,7 +70,7 @@ public class ProgramRun {
                     }
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

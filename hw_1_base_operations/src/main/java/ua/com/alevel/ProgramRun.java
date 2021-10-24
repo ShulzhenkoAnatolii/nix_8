@@ -45,10 +45,11 @@ public class ProgramRun {
                     }
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private static void menuProgram() {
         System.out.println("If you want to use the first program (Counting numbers in a line), select 1");
         System.out.println("If you want to use the second program (Counting characters in a string), select 2");
