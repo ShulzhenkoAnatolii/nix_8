@@ -1,4 +1,4 @@
-package ua.com.alevel.reverse;
+package ua.com.alevel;
 
 public final class ReverseStringUtil {
     public static String reverse(String src) {

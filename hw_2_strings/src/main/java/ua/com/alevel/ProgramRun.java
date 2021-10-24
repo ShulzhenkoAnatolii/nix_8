@@ -1,7 +1,5 @@
 package ua.com.alevel;
 
-import ua.com.alevel.reverse.ReverseStringUtil;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

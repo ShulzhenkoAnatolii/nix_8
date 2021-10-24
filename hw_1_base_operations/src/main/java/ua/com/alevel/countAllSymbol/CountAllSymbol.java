@@ -20,15 +20,18 @@ public class CountAllSymbol {
                 .toCharArray();
         Arrays.sort(array);
 
-        int count = 1;
-        for (int i = 0; i < array.length; i++) {
-            int count2 = 1;
-            for (int j = i + 1; j < array.length; j++)
-                if (array[i] == array[j]) count2++;
+        if (array.length != 0){
+            int count = 1;
+            for (int i = 0; i < array.length; i++) {
+                int count2 = 1;
+                for (int j = i + 1; j < array.length; j++)
+                    if (array[i] == array[j]) count2++;
                 System.out.println(count + ". " + array[i] + " - " + count2);
                 count++;
                 i += count2 - 1;
             }
             System.out.println("If you want to continue enter the program number from 1 to 3\nIf you want to finish enter 0\nTo view the menu again, select 4 ");
+
+        } else System.out.println("The entered string does not contain letters");
     }
 }
