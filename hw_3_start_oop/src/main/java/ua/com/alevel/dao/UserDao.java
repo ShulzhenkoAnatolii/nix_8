@@ -1,5 +1,6 @@
 package ua.com.alevel.dao;
 
+import ua.com.alevel.array.DynamicArray;
 import ua.com.alevel.db.UserDataBase;
 import ua.com.alevel.entity.User;
 
@@ -11,7 +12,7 @@ public class UserDao {
         UserDataBase.getInstance().create(user);
     }
 
-    public void update(User user) {
+    /*public void update(User user) {
         UserDataBase.getInstance().update(user);
     }
 
@@ -21,9 +22,9 @@ public class UserDao {
 
     public User findById(String id) {
         return UserDataBase.getInstance().findById(id);
-    }
+    }*/
 
-    public List<User> findAll() {
+    public DynamicArray<User> findAll() {
         return UserDataBase.getInstance().findAll();
     }
 }

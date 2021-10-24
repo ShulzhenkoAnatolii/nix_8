@@ -1,5 +1,6 @@
 package ua.com.alevel.db;
 
+import ua.com.alevel.array.DynamicArray;
 import ua.com.alevel.entity.User;
 
 import java.util.ArrayList;
@@ -8,11 +9,11 @@ import java.util.UUID;
 
 public class UserDataBase {
 
-    private final List<User> users;
+    private final DynamicArray<User> users;
     private static UserDataBase instance;
 
     private UserDataBase() {
-        users = new ArrayList<>();
+        users = new DynamicArray<>();
     }
 
     public static UserDataBase getInstance() {
@@ -27,13 +28,13 @@ public class UserDataBase {
         users.add(user);
     }
 
-    public void update(User user) {
+    /*public void update(User user) {
         User current = findById(user.getId());
         current.setAge(user.getAge());
         current.setName(user.getName());
-    }
+    }*/
 
-    public void delete(String id) {
+    /*public void delete(String id) {
         users.removeIf(user -> user.getId().equals(id));
     }
 
@@ -42,17 +43,17 @@ public class UserDataBase {
                 .filter(u -> u.getId().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("user not found idiot!"));
-    }
+    }*/
 
-    public List<User> findAll() {
-        return users;
+    public DynamicArray<User> findAll() {
+        return (DynamicArray<User>) users;
     }
 
     private String generateId() {
         String id = UUID.randomUUID().toString();
-        if (users.stream().anyMatch(user -> user.getId().equals(id))) {
+        /*if (users.stream().anyMatch(user -> user.getId().equals(id))) {
             return generateId();
-        }
+        }*/
         return id;
     }
 }

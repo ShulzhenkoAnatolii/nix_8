@@ -1,8 +1,8 @@
 package ua.com.alevel;
 
-import ua.com.alevel.countAllSymbol.CountAllSymbol;
-import ua.com.alevel.endLesson.EndLesson;
-import ua.com.alevel.sumAllNumber.SumAllNumber;
+import ua.com.alevel.countallsymbol.CountAllSymbol;
+import ua.com.alevel.endlesson.EndLesson;
+import ua.com.alevel.sumallnumber.SumAllNumber;
 
 import java.io.BufferedReader;
 import java.io.IOException;

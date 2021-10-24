@@ -1,9 +1,8 @@
-package ua.com.alevel.sumAllNumber;
+package ua.com.alevel.sumallnumber;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

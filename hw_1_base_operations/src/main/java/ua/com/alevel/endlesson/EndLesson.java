@@ -1,4 +1,4 @@
-package ua.com.alevel.endLesson;
+package ua.com.alevel.endlesson;
 
 import java.io.BufferedReader;
 import java.io.IOException;

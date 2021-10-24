@@ -1,12 +1,12 @@
 package ua.com.alevel.view;
 
+import ua.com.alevel.array.DynamicArray;
 import ua.com.alevel.entity.User;
 import ua.com.alevel.service.UserService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 public class UserController {
 
@@ -45,9 +45,9 @@ public class UserController {
     private void crud(String position, BufferedReader reader) {
         switch (position) {
             case "1" : create(reader); break;
-            case "2" : update(reader); break;
+           /* case "2" : update(reader); break;
             case "3" : delete(reader); break;
-            case "4" : findById(reader); break;
+            case "4" : findById(reader); break;*/
             case "5" : findAll(reader); break;
         }
         runNavigation();
@@ -69,7 +69,7 @@ public class UserController {
             System.out.println("problem: = " + e.getMessage());
         }
     }
-
+/*
     private void update(BufferedReader reader) {
         System.out.println("UserController.update");
         try {
@@ -111,16 +111,15 @@ public class UserController {
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
         }
-    }
+    }*/
 
     private void findAll(BufferedReader reader) {
         System.out.println("UserController.findAll");
-        List<User> users = userService.findAll();
+        DynamicArray<User> users = userService.findAll();
         if (users != null && users.size() != 0) {
-            for (User user : users) {
-                System.out.println("user = " + user);
+            users.out();
             }
-        } else {
+        else {
             System.out.println("users empty");
         }
     }
