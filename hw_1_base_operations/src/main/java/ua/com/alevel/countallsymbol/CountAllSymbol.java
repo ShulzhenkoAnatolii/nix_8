@@ -8,7 +8,6 @@ import java.util.Arrays;
 public class CountAllSymbol {
 
     public void countAllSymbolInStringLine() throws IOException {
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter your Line");

@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 public class ProgramRun {
 
     public static void run() {
-
         menuProgram();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

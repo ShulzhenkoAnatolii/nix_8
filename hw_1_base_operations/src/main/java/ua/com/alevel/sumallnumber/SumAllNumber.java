@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class SumAllNumber {
 
     public void sumAllNumberInStringLine() throws IOException {
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter your line");
@@ -31,7 +30,5 @@ public class SumAllNumber {
             System.out.println("There are no numbers in the string");
             System.out.println("If you want to continue enter the program number from 1 to 3\nIf you want to finish enter 0\nTo view the menu again, select 4 ");
         }
-
     }
-
 }

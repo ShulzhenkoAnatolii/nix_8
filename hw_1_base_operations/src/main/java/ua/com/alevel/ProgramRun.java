@@ -9,13 +9,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ProgramRun {
-    public static void run() {
 
+    public static void run() {
         menuProgram();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String task;
-
 
         try {
             while ((task = reader.readLine()) != null) {

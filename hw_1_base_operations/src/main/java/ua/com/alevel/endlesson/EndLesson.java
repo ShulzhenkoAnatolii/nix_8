@@ -34,8 +34,6 @@ public class EndLesson {
                 else
                     System.out.println("You entered incorrect data, enter a number from 1 to 10");
             }
-
         }
-
     }
 }

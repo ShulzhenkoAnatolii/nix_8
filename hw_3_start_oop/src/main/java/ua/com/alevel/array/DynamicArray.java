@@ -3,6 +3,7 @@ package ua.com.alevel.array;
 import java.util.Objects;
 
 public class DynamicArray<T> {
+
     private static final int DEFAULT_CAPACITY = 5;
     private Object[] elements;
     private int size;

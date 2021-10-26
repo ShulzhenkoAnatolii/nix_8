@@ -28,29 +28,12 @@ public class UserDataBase {
         users.add(user);
     }
 
-    /*public void update(User user) {
-        User current = findById(user.getId());
-        current.setAge(user.getAge());
-        current.setName(user.getName());
-    }*/
-
-    /*public void delete(String id) {
-        users.removeIf(user -> user.getId().equals(id));
-    }
-
-    public User findById(String id) {
-        return users.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("user not found idiot!"));
-    }*/
-
     public DynamicArray<User> findAll() {
-        return (DynamicArray<User>) users;
+        return users;
     }
 
     private String generateId() {
-        String id = UUID.randomUUID().toString();
+        String id = UUID.randomUUID().toString(); // ну ... надеяться на несовпадение рандомов - такое дело ...
         /*if (users.stream().anyMatch(user -> user.getId().equals(id))) {
             return generateId();
         }*/
