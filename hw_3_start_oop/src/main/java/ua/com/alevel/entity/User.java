@@ -6,8 +6,8 @@ public class User {
 
     private String id;
     private String name;
-    /*private String lastName;
-    private String email;*/
+    private String lastName;
+    private String email;
     private int age;
 
     public String getId() {
@@ -26,7 +26,7 @@ public class User {
         this.name = name;
     }
 
-    /*public String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
@@ -40,7 +40,7 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }*/
+    }
 
     public int getAge() {
         return age;
@@ -55,8 +55,8 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return age == user.age && Objects.equals(id, user.id) && Objects.equals(name, user.name);
-                //&& Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
+        return age == user.age && Objects.equals(id, user.id) && Objects.equals(name, user.name)
+                && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                /*", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +*/
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
     }

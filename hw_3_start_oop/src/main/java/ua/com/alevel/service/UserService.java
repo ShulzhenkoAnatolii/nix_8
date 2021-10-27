@@ -4,8 +4,6 @@ import ua.com.alevel.array.DynamicArray;
 import ua.com.alevel.dao.UserDao;
 import ua.com.alevel.entity.User;
 
-import java.util.List;
-
 public class UserService {
 
     private final UserDao userDao = new UserDao();
@@ -14,7 +12,7 @@ public class UserService {
         userDao.create(user);
     }
 
-    /*public void update(User user) {
+    public void update(User user) {
         userDao.update(user);
     }
 
@@ -25,7 +23,7 @@ public class UserService {
     public User findById(String id) {
         return userDao.findById(id);
     }
-*/
+
     public DynamicArray<User> findAll() {
         return userDao.findAll();
     }

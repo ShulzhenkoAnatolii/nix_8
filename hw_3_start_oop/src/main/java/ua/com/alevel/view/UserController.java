@@ -44,11 +44,21 @@ public class UserController {
 
     private void crud(String position, BufferedReader reader) {
         switch (position) {
-            case "1" : create(reader); break;
-           /* case "2" : update(reader); break;
-            case "3" : delete(reader); break;
-            case "4" : findById(reader); break;*/
-            case "5" : findAll(reader); break;
+            case "1":
+                create(reader);
+                break;
+            case "2":
+                update(reader);
+                break;
+            case "3":
+                delete(reader);
+                break;
+            case "4":
+                findById(reader);
+                break;
+            case "5":
+                findAll(reader);
+                break;
         }
         runNavigation();
     }
@@ -58,18 +68,24 @@ public class UserController {
         try {
             System.out.println("Please, enter your name");
             String name = reader.readLine();
+            System.out.println("Please, enter your surname");
+            String lastName = reader.readLine();
+            System.out.println("Please, enter your email");
+            String email = reader.readLine();
             System.out.println("Please, enter your age");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             User user = new User();
             user.setAge(age);
             user.setName(name);
+            user.setLastName(lastName);
+            user.setEmail(email);
             userService.create(user);
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
         }
     }
-/*
+
     private void update(BufferedReader reader) {
         System.out.println("UserController.update");
         try {
@@ -77,12 +93,18 @@ public class UserController {
             String id = reader.readLine();
             System.out.println("Please, enter your name");
             String name = reader.readLine();
+            System.out.println("Please, enter your surname");
+            String lastName = reader.readLine();
+            System.out.println("Please, enter your email");
+            String email = reader.readLine();
             System.out.println("Please, enter your age");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             User user = new User();
             user.setId(id);
             user.setAge(age);
+            user.setLastName(lastName);
+            user.setEmail(email);
             user.setName(name);
             userService.update(user);
         } catch (IOException e) {
@@ -111,15 +133,14 @@ public class UserController {
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
         }
-    }*/
+    }
 
     private void findAll(BufferedReader reader) {
         System.out.println("UserController.findAll");
         DynamicArray<User> users = userService.findAll();
         if (users != null && users.size() != 0) {
             users.out();
-            }
-        else {
+        } else {
             System.out.println("users empty");
         }
     }
