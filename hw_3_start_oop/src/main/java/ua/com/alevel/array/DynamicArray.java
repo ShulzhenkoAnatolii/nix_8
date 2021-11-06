@@ -47,20 +47,4 @@ public class DynamicArray<T> {
     public Object getElement(int element) {
         return elements[element];
     }
-
-    /*@SuppressWarnings("unchecked")
-    public T get(int index) {
-        Objects.checkIndex(index, size);
-        return (T) elements[index];
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public T remove(int index) {
-        Objects.checkIndex(index, size);
-        T removedElement = (T) elements[index];
-        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
-        size--;
-        return removedElement;
-    }*/
 }
