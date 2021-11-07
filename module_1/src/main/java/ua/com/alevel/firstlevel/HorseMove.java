@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 public class HorseMove {
+
     private int x1;
     private int y1;
     private int x2;

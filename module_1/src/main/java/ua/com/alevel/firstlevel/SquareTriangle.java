@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class SquareTriangle {
+
     public void calculateAreaTriangle() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("This program calculates the area of a triangle according to the given coordinates of 3 points\n" +

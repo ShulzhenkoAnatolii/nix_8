@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GameOfLife {
+
     private static int n;
     private static int m;
     private static int array[][];
@@ -93,9 +94,4 @@ public class GameOfLife {
         }
         return sum;
     }
-
 }
-
-
-
-

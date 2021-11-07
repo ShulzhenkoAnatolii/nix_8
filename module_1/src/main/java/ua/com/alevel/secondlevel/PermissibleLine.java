@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class PermissibleLine {
+
     public void checkPermissibleLine() throws IOException {
         System.out.println("Is the input string valid\nEnter your String Line");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

@@ -76,6 +76,5 @@ public class ProgramRun {
         System.out.println("Level 3 task 1 ---> select 6");
         System.out.println("If you want to exit, please select 0");
         System.out.print("Your choice ---> ");
-
     }
 }
