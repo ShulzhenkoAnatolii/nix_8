@@ -50,7 +50,7 @@ public class User {
         this.age = age;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
@@ -61,8 +61,8 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, /*lastName, email,*/ age);
-    }
+        return Objects.hash(id, name, lastName, email, age);
+    }*/
 
     @Override
     public String toString() {

@@ -96,6 +96,7 @@ public class MainController {
         }
         runNavigation();
     }
+
     private void createUser(BufferedReader reader) {
         System.out.println("UserController.create");
         try {
@@ -103,7 +104,7 @@ public class MainController {
             String name = reader.readLine();
             System.out.print("Please, enter your Surname ---> ");
             String lastName = reader.readLine();
-            if (name.isBlank() || lastName.isBlank()){
+            if (name.isBlank() || lastName.isBlank()) {
                 System.out.println("First name and Last name must not be empty");
             } else {
                 User user = new User();
@@ -172,6 +173,7 @@ public class MainController {
             System.out.println("users empty");
         }
     }
+
     private void createMessage(BufferedReader reader) {
         System.out.println("MessageController.create");
         try {
@@ -251,7 +253,7 @@ public class MainController {
             System.out.print("Please, enter id User ---> ");
             String userId = reader.readLine();
             if (userId.isEmpty()) System.out.println("User id Empty");
-            else{
+            else {
                 DynamicArray<Message> messagesByUserId = messageService.findAllByUserId(userId);
                 if (messagesByUserId != null && messagesByUserId.size() > 0) {
                     messagesByUserId.out();

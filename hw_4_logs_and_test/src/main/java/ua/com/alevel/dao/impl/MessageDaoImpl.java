@@ -7,7 +7,6 @@ import ua.com.alevel.entity.Message;
 
 public class MessageDaoImpl implements MessageDao {
 
-
     @Override
     public void create(Message entity) {
         ArrayMessageDb.getInstance().create(entity);

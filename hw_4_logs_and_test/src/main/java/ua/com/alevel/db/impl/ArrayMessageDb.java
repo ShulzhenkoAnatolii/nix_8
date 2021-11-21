@@ -3,7 +3,6 @@ package ua.com.alevel.db.impl;
 import ua.com.alevel.array.DynamicArray;
 import ua.com.alevel.db.MessageDb;
 import ua.com.alevel.entity.Message;
-import ua.com.alevel.entity.User;
 
 import java.util.UUID;
 
@@ -89,7 +88,7 @@ public class ArrayMessageDb implements MessageDb {
         DynamicArray<Message> userMessage = new DynamicArray<>();
         for (int i = 0; i < messages.size(); i++) {
             message = (Message) messages.getElement(i);
-            if (userId.equals(message.getUserId())){
+            if (userId.equals(message.getUserId())) {
                 userMessage.add(message);
             }
         }

@@ -7,6 +7,7 @@ import ua.com.alevel.entity.User;
 import java.util.UUID;
 
 public class ArrayUserDb implements UserDb {
+
     private final DynamicArray<User> users;
     private static ArrayUserDb instance;
 
