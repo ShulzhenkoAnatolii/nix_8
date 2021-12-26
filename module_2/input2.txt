@@ -1,0 +1,5 @@
+A list of dates (string record) is given in formats like “2020/04/05”, “05/04/2020”, “04-05-2020” (all dates in the example are April 5th, 2020)
+Return a list of dates (string) in the format “20200405”. Dates with invalid format - ignore.
+A list of names is given. Find the first unique name. Allowed time complexity is O (n), provided that accessing an element of the list by index is O (1).
+A list of cities is given. Each path between cities has a cost (positive integer). The task is to find the most profitable route between the two cities.
+The maximum possible path cost is 200,000.
