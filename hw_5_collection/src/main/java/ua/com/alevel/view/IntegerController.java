@@ -3,7 +3,6 @@ package ua.com.alevel.view;
 import ua.com.alevel.mathsetnumber.MathSet;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class IntegerController {
