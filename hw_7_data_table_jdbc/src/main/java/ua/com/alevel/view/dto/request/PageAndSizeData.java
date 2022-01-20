@@ -2,8 +2,8 @@ package ua.com.alevel.view.dto.request;
 
 public class PageAndSizeData {
 
-    int page;
-    int size;
+    private int page;
+    private int size;
 
     public PageAndSizeData() {
     }

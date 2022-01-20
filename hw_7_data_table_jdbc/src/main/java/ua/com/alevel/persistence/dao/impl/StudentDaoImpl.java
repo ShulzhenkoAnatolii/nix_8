@@ -8,13 +8,11 @@ import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.Group;
 import ua.com.alevel.persistence.entity.Student;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Stack;
 
 @Service
 public class StudentDaoImpl implements StudentDao {
@@ -45,16 +43,25 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void create(Student entity) {
+        long studentId = 0;
         try {
-            PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_STUDENT_QUERY);
-            preparedStatement.setTimestamp(1,new Timestamp(entity.getCreated().getTime()));
-            preparedStatement.setTimestamp(2,new Timestamp(entity.getUpdated().getTime()));
+            PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_STUDENT_QUERY, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setTimestamp(1, new Timestamp(entity.getCreated().getTime()));
+            preparedStatement.setTimestamp(2, new Timestamp(entity.getUpdated().getTime()));
             preparedStatement.setString(3, entity.getFirstName());
             preparedStatement.setString(4, entity.getLastName());
-            preparedStatement.executeUpdate();
+            preparedStatement.execute();
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys != null && generatedKeys.next()) {
+                    studentId = generatedKeys.getLong(1);
+                } else {
+                    throw new SQLException("Creating student failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+        createRelationGroupStudent(studentId, entity.getGroup().getId());
     }
 
     @Override
@@ -76,7 +83,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void delete(Long id) {
         try {
-            PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(DELETE_STUDENT_BY_ID_QUERY);
+            PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(DELETE_STUDENT_BY_ID_QUERY + id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

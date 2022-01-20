@@ -21,11 +21,12 @@ public class StudentController extends BaseController {
     private final GroupFacade groupFacade;
     private final StudentFacade studentFacade;
     private final HeaderName[] columnNames = new HeaderName[]{
-            new HeaderName("#", null, null),
-            new HeaderName("first name", "firstName", "first_name"),
-            new HeaderName("last name", "lastName", "last_name"),
-            new HeaderName("details", null, null),
-            new HeaderName("delete", null, null)
+            new HeaderName("№", null, null),
+            new HeaderName("First name", "firstName", "first_name"),
+            new HeaderName("Last name", "lastName", "last_name"),
+            new HeaderName("Date created", "created", "created"),
+            new HeaderName("Details", null, null),
+            new HeaderName("Delete", null, null)
     };
 
     public StudentController(GroupFacade groupFacade, StudentFacade studentFacade) {
@@ -85,15 +86,17 @@ public class StudentController extends BaseController {
         return "redirect:/students";
     }
 
-    @GetMapping("/new")
-    public String redirectToNewStudentPage(Model model) {
-        model.addAttribute("student", new StudentRequestDto());
+    @GetMapping("/new/{id}")
+    public String redirectToNewStudentPage(Model model, @PathVariable Long id) {
+        StudentRequestDto student = new StudentRequestDto();
+        student.setGroupId(id);
+        model.addAttribute("student", student);
         return "pages/students/student_new";
     }
 
     @PostMapping("/new")
-    public String createNewStudent(@ModelAttribute("student") StudentRequestDto dto) {
+    public String createNewStudent(@ModelAttribute("group") StudentRequestDto dto) {
         studentFacade.create(dto);
-        return "redirect:/students";
+        return "redirect:/students/groups/" + dto.getGroupId();
     }
 }

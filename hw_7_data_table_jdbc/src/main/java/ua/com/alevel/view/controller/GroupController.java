@@ -18,10 +18,10 @@ public class GroupController extends BaseController {
     private long new_id;
     private final GroupFacade groupFacade;
     private final HeaderName[] columnNames = new HeaderName[]{
-            new HeaderName("#", null, null),
-            new HeaderName("name", "name", "name"),
-            new HeaderName("details", null, null),
-            new HeaderName("delete", null, null)
+            new HeaderName("№", null, null),
+            new HeaderName("Name", "name", "name"),
+            new HeaderName("Details", null, null),
+            new HeaderName("Delete", null, null)
     };
 
     public GroupController(GroupFacade groupFacade) {
