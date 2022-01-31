@@ -1,30 +1,12 @@
-package ua.com.alevel.persistence.entity;
+package ua.com.alevel.view.dto.response;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@MappedSuperclass
-public abstract class BaseEntity {
+public class ResponseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
-
-    public BaseEntity() {
-        this.created = new Date();
-        this.updated = new Date();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updated = new Date();
-    }
 
     public Long getId() {
         return id;

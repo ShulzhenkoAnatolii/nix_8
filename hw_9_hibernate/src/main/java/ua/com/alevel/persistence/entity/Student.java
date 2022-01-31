@@ -6,13 +6,10 @@ import javax.persistence.*;
 @Table(name = "students_table")
 public class Student extends BaseEntity {
 
-    @Column(name = "first_name")
-    private String firstName;
+    private String first_name;
+    private String last_name;
 
-    @Column(name = "last_name")
-    private String lastName;
-
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
@@ -21,19 +18,19 @@ public class Student extends BaseEntity {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first_name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_name = lastName;
     }
 
     public Group getGroup() {
