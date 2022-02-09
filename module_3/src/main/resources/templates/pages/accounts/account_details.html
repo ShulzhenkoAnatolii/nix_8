@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Account Details</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Account Details
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>id</th>
+                            <td th:text="${account.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Wallet</th>
+                            <td th:text="${account.getWallet()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Balance, USD</th>
+                            <td th:text="${account.getBalance()}"></td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>
+                                <a th:href="@{'/users/details/' + ${account.getUser().getId()}}" type="button"
+                                   th:text="${account.getUser().getName()}"></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <a th:href="@{'/accounts/update/' + ${account.getId()}}" type="button" class="btn btn-primary">Edit
+                        account</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div th:insert="fragments/data_table_transaction :: transaction_account">
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

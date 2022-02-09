@@ -11,5 +11,4 @@ public class ResponseDto {
     public void setId(Long id) {
         this.id = id;
     }
-
 }
