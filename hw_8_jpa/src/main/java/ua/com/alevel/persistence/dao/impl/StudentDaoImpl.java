@@ -30,7 +30,6 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public void create(Student entity) {
-        System.out.println(entity);
         entityManager.persist(entity);
     }
 
