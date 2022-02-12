@@ -1,15 +1,14 @@
 package ua.com.alevel.persistence.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transactions")
-public class Transaction extends BaseEntity{
+public class Transaction extends BaseEntity {
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
-    private long amount;
+    private LocalDateTime date;
+    private Long amount;
 
     @ManyToOne()
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
@@ -21,22 +20,22 @@ public class Transaction extends BaseEntity{
 
     public Transaction() {
         super();
-        this.date = new Date();
+        this.date = LocalDateTime.now();
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public long getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 
@@ -54,5 +53,16 @@ public class Transaction extends BaseEntity{
 
     public void setReceiver(Account receiver) {
         this.receiver = receiver;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + super.getId() +
+                ", date=" + date +
+                ", amountLong=" + amount +
+                ", senderId=" + sender.getId() +
+                ", receiverId=" + receiver.getId() +
+                '}';
     }
 }

@@ -73,4 +73,9 @@ public class Account extends BaseEntity{
     public void setSender(List<Transaction> sender) {
         this.sender = sender;
     }
+
+    @Override
+    public String toString() {
+        return user.getName();
+    }
 }

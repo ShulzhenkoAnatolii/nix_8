@@ -1,5 +1,7 @@
 package ua.com.alevel.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ua.com.alevel.exception.EntityExistException;
 import ua.com.alevel.persistence.dao.AccountDao;
@@ -15,6 +17,7 @@ import ua.com.alevel.util.WebResponseUtil;
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
+    final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
     private final TransactionDao transactionDao;
     private final AccountDao accountDao;
 
@@ -25,6 +28,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void create(Transaction entity) {
+        LOGGER_INFO.info("creating, " + entity);
         Account sender = entity.getSender();
         Account receiver = entity.getReceiver();
         sender.setBalance(sender.getBalance() - entity.getAmount());
@@ -32,7 +36,9 @@ public class TransactionServiceImpl implements TransactionService {
         accountDao.update(sender);
         accountDao.update(receiver);
         transactionDao.create(entity);
+        LOGGER_INFO.info("creating completed");
     }
+
 
     @Override
     public void update(Transaction entity) {
@@ -53,11 +59,13 @@ public class TransactionServiceImpl implements TransactionService {
         DataTableResponse<Transaction> dataTableResponse = transactionDao.findAll(request);
         long count = transactionDao.count();
         WebResponseUtil.initDataTableResponse(request, dataTableResponse, count);
+        LOGGER_INFO.info("findAllUsers request, " + dataTableResponse);
         return dataTableResponse;
     }
 
     private void checkByExist(Long id) {
         if (!transactionDao.existById(id)) {
+            LOGGER_INFO.info("transaction not found, transactionId=" + id);
             throw new EntityExistException("entity not found");
         }
     }

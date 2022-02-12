@@ -4,11 +4,12 @@ import ua.com.alevel.persistence.entity.Account;
 import ua.com.alevel.persistence.entity.Transaction;
 import ua.com.alevel.persistence.util.covertor.MoneyConvertorUtil;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TransactionResponseDto extends ResponseDto{
 
-    private Date date;
+    private LocalDateTime date;
     private Double amount;
     private Account sender;
     private Account receiver;
@@ -28,11 +29,11 @@ public class TransactionResponseDto extends ResponseDto{
         super.setId(transaction.getId());
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

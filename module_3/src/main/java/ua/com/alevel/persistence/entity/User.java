@@ -36,4 +36,12 @@ public class User extends BaseEntity {
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", id=" + super.getId() +
+                '}';
+    }
 }

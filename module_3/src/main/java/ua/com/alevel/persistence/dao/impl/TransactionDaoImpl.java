@@ -30,10 +30,16 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
-    public void update(Transaction entity) { }
+    public void update(Transaction entity) {
+        entityManager.merge(entity);
+    }
 
     @Override
-    public void delete(Long id) { }
+    public void delete(Long id) {
+        entityManager.createQuery("delete from Transaction where id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
 
     @Override
     public boolean existById(Long id) {

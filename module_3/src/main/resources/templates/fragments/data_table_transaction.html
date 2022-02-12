@@ -9,18 +9,19 @@
                 <div class="col-12">
                     <div class="card mt-2 mb-2">
                         <div class="card-header">
-                            <div>
-
-                                <a type="button" class="btn btn-success" th:href="@{${createNew}}">Export data to CSV</a>
-                                <label for="minDate" class="ml-4">From</label>
-                                <input type="date" id="minDate" name="date"/>
-                                <label for="calendarForTasks" class="ml-2">Before</label>
-                                <input type="date" value="" id="calendarForTasks">
-
-                                <th:block layout:fragment="scripts">
-                                    <script type="text/javascript" th:src="@{/js/date.js}"></script>
-                                </th:block>
-
+                            <div class="card-header" th:if="${createNew == 'accountDetails'}">
+                                <form action="#" th:action="@{/accounts/details/export}" th:object="${export}" method="post">
+                                    <button type="submit">Export to CSV</button>
+                                    <span>
+                            <input type="date" id="minDate" aria-describedby="minDate"
+                                   th:field="*{minDate}"
+                                   value="${minDate}" th:value="${minDate}" required>
+                            <span> - </span>
+                            <input type="date" id="maxDate" aria-describedby="maxDate"
+                                   th:field="*{maxDate}"
+                                   value="${maxDate}" th:value="${maxDate}" required>
+                        </span>
+                                </form>
                             </div>
 
                         </div>

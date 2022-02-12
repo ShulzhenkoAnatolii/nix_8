@@ -18,20 +18,24 @@ import ua.com.alevel.view.dto.response.UserResponseDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/accounts")
 public class AccountController extends BaseController {
 
+    private Long accountId;
     private long update_id;
     private final UserFacade userFacade;
     private final AccountFacade accountFacade;
     private final TransactionFacade transactionFacade;
+    private final AccountService accountService;
 
-    public AccountController(UserFacade userFacade, AccountFacade accountFacade, TransactionFacade transactionFacade) {
+    public AccountController(UserFacade userFacade, AccountFacade accountFacade, TransactionFacade transactionFacade, AccountService accountService) {
         this.userFacade = userFacade;
         this.accountFacade = accountFacade;
         this.transactionFacade = transactionFacade;
+        this.accountService = accountService;
     }
 
     private final HeaderName[] columnNames = new HeaderName[]{
@@ -70,12 +74,16 @@ public class AccountController extends BaseController {
     @GetMapping("/details/{id}")
     public String details(@PathVariable @Valid @Min(value = 1, message = "invalid id") @NotNull() Long id,
                           Model model, WebRequest request) {
-        AccountResponseDto dto = accountFacade.findById(id);
-        initDataTable(accountFacade.findAllAccountsByUser(request,id), transactionColumnNames, model);
+        accountId = id;
+        model.addAttribute("account", accountFacade.findById(id));
+        initDataTable(accountFacade.findAllTransactionsByAccount(request, id), transactionColumnNames, model);
         model.addAttribute("createUrl", "/accounts/details/" + id);
         model.addAttribute("createNew", "accountDetails");
-        model.addAttribute("cardHeader", "All Transactions");
-        model.addAttribute("account", dto);
+        model.addAttribute("cardHeader", "Transaction history");
+        AccountRequestDto dto = new AccountRequestDto();
+        dto.setMinDate(accountFacade.minDateTransaction(id).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        dto.setMaxDate(accountFacade.maxDateTransaction(id).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        model.addAttribute("export", dto);
         return "pages/accounts/account_details";
     }
 
@@ -119,5 +127,12 @@ public class AccountController extends BaseController {
     public String createNewAccount(@ModelAttribute("account") AccountRequestDto dto) {
         accountFacade.create(dto);
         return "redirect:/users/" + dto.getUserId() + "/account";
+    }
+
+    @PostMapping("/details/export")
+    public String exportToCsv (@ModelAttribute("export") AccountRequestDto dto){
+        Long id = accountId;
+        accountFacade.exportToCsv(dto,id);
+        return "redirect:/accounts/details/" + id;
     }
 }

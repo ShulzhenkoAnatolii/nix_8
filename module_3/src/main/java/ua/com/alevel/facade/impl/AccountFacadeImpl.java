@@ -18,6 +18,8 @@ import ua.com.alevel.view.dto.response.PageData;
 import ua.com.alevel.view.dto.response.AccountResponseDto;
 import ua.com.alevel.view.dto.response.TransactionResponseDto;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,7 +82,7 @@ public class AccountFacadeImpl implements AccountFacade {
     }
 
     @Override
-    public PageData<TransactionResponseDto> findAllAccountsByUser(WebRequest request, Long accountId) {
+    public PageData<TransactionResponseDto> findAllTransactionsByAccount(WebRequest request, Long accountId) {
         DataTableRequest dataTableRequest = WebRequestUtil.initDataTableRequest(request);
         DataTableResponse<Transaction> tableResponse = accountService.findAllTransactionByAccountId(dataTableRequest, accountId);
         List<TransactionResponseDto> transactions = tableResponse.getItems().stream().
@@ -89,5 +91,20 @@ public class AccountFacadeImpl implements AccountFacade {
         PageData<TransactionResponseDto> pageData = (PageData<TransactionResponseDto>) WebResponseUtil.initPageData(tableResponse);
         pageData.setItems(transactions);
         return pageData;
+    }
+
+    public LocalDateTime minDateTransaction(Long id) {
+        return accountService.minDateTransaction(id);
+    }
+
+    public LocalDateTime maxDateTransaction(Long id) {
+        return accountService.maxDateTransaction(id);
+    }
+
+    @Override
+    public void exportToCsv(AccountRequestDto dto, Long id) {
+        LocalDateTime minDate = LocalDateTime.parse(dto.getMinDate() + " 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime maxDate = LocalDateTime.parse(dto.getMaxDate() + " 23:59:59", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        accountService.exportToCsv(minDate, maxDate, id);
     }
 }

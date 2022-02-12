@@ -8,6 +8,8 @@ import ua.com.alevel.persistence.entity.User;
 import java.util.List;
 
 public interface UserDao extends BaseDao<User>{
+
     DataTableResponse<Account> findAllAccountsByUser(DataTableRequest request, Long userId);
+
     List<Account> findListAccounts(Long userId);
 }
