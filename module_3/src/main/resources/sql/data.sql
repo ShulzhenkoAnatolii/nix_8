@@ -9,10 +9,6 @@ insert into users values (default, 'Joshua Bloch');
 insert into users values (default, 'Joseph Bowbeer');
 insert into users values (default, 'David Holmes');
 insert into users values (default, 'Doug Lea');
-insert into users values (default, 'Alexander Kucheryavyi');
-insert into users values (default, 'Danya Jordan');
-insert into users values (default, 'Lesha Stone');
-insert into users values (default, 'Vika Mills');
 
 insert into accounts values (default, 100075, 'Alfa1', 1);
 insert into accounts values (default, 105083, 'Mono1', 1);
@@ -34,12 +30,6 @@ insert into accounts values (default, 230054, 'ProCredit8', 8);
 insert into accounts values (default, 310022, 'Privat9', 9);
 insert into accounts values (default, 435434, 'Credit10', 10);
 insert into accounts values (default, 534543, 'ProCredit10', 10);
-insert into accounts values (default, 657567, 'Raiffeisen11', 11);
-insert into accounts values (default, 435254, 'Privat11', 11);
-insert into accounts values (default, 768677, 'Credit12', 12);
-insert into accounts values (default, 235524, 'ProCredit13', 13);
-insert into accounts values (default, 674564, 'Raiffeisen14', 14);
-insert into accounts values (default, 346643, 'Credit14', 14);
 
 
 insert into transactions values (default, 55045, CURRENT_TIMESTAMP(), 2, 4);
@@ -49,10 +39,5 @@ insert into transactions values (default, 23007, CURRENT_TIMESTAMP(), 5, 7);
 insert into transactions values (default, 54000, CURRENT_TIMESTAMP(), 5, 4);
 insert into transactions values (default, 12800, CURRENT_TIMESTAMP(), 6, 1);
 insert into transactions values (default, 32428, CURRENT_TIMESTAMP(), 7, 2);
-insert into transactions values (default, 32423, CURRENT_TIMESTAMP(), 11, 13);
-insert into transactions values (default, 54634, CURRENT_TIMESTAMP(), 14, 5);
-insert into transactions values (default, 23442, CURRENT_TIMESTAMP(), 10, 12);
-insert into transactions values (default, 23434, CURRENT_TIMESTAMP(), 12, 5);
-insert into transactions values (default, 65756, CURRENT_TIMESTAMP(), 13, 8);
 insert into transactions values (default, 56767, CURRENT_TIMESTAMP(), 9, 5);
 
