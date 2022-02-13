@@ -18,4 +18,6 @@ public interface AccountFacade extends BaseFacade<AccountRequestDto, AccountResp
     LocalDateTime maxDateTransaction(Long id);
 
     void exportToCsv(AccountRequestDto dto, Long id);
+
+    PageData<AccountResponseDto> findAllAccount(WebRequest request);
 }

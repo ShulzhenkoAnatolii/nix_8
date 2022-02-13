@@ -1,24 +1,28 @@
 package ua.com.alevel.dao.impl;
 
-import ua.com.alevel.dao.CourseDao;
-import ua.com.alevel.entity.Course;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.entity.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class CourseDaoImpl implements CourseDao {
+@Service
+@Transactional
+public class StudentDaoImpl implements StudentDao {
 
     private final EntityManagerFactory entityManagerFactory;
 
-    public CourseDaoImpl(EntityManagerFactory entityManagerFactory) {
+    public StudentDaoImpl(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
 
-    @Override
-    public void create(Course entity) {
+    public void create(Student entity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -33,9 +37,7 @@ public class CourseDaoImpl implements CourseDao {
         }
     }
 
-    @Override
-    public void update(Course entity) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public void update(Student entity) {EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
@@ -49,13 +51,12 @@ public class CourseDaoImpl implements CourseDao {
         }
     }
 
-    @Override
     public void delete(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.createQuery("delete from Course c where c.id = :id")
+            entityManager.createQuery("delete from Student s where s.id = :id")
                     .setParameter("id", id)
                     .executeUpdate();
             transaction.commit();
@@ -68,38 +69,36 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public Course findById(Integer id) {
+    public Student findById(Integer id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Course course = null;
+        Student student = null;
         try {
-            course = entityManager.find(Course.class, id);
+            student = entityManager.find(Student.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             entityManager.close();
         }
-        return course;
+        return student;
     }
 
     @Override
-    public List<Course> findAll() {
+    public List<Student> findAll() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        List<Course> courses = Collections.emptyList();
+        List<Student> students = Collections.emptyList();
         try {
-            courses = entityManager.createQuery("select c from Course c")
+            students = entityManager.createQuery("select s from Student s")
                     .getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             entityManager.close();
         }
-        return courses;
+        return students;
     }
 
     @Override
     public boolean existById(Integer id) {
-        if (findById(id) == null) {
-            return false;
-        } else return true;
+        return false;
     }
 }

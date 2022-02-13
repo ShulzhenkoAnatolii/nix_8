@@ -107,4 +107,16 @@ public class AccountFacadeImpl implements AccountFacade {
         LocalDateTime maxDate = LocalDateTime.parse(dto.getMaxDate() + " 23:59:59", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         accountService.exportToCsv(minDate, maxDate, id);
     }
+
+    @Override
+    public PageData<AccountResponseDto> findAllAccount(WebRequest request) {
+        DataTableRequest dataTableRequest = WebRequestUtil.initDataTableRequest(request);
+        DataTableResponse<Account> tableResponse = accountService.findAllAccount(dataTableRequest);
+        List<AccountResponseDto> accounts = tableResponse.getItems().stream().
+                map(AccountResponseDto::new).
+                collect(Collectors.toList());
+        PageData<AccountResponseDto> pageData = (PageData<AccountResponseDto>) WebResponseUtil.initPageData(tableResponse);
+        pageData.setItems(accounts);
+        return pageData;
+    }
 }

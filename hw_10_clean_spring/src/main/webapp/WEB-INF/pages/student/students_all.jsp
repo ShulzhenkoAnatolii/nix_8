@@ -2,22 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Course All</title>
+    <title>Students All</title>
 </head>
 <body>
 <table>
     <thead>
     <tr>
         <th>id</th>
-        <th>name</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="course" items="${courses}">
+    <c:forEach var="student" items="${students}">
         <tr>
-            <td>${course.id}</td>
-            <td>${course.name}</td>
-            <td><a href="${pageContext.request.contextPath}/courses/update/${course.getId()}">Edit</a></td>
+            <td>${student.id}</td>
+            <td>${student.firstName}</td>
+            <td>${student.lastName}</td>
+            <td>${student.email}</td>
         </tr>
     </c:forEach>
     </tbody>

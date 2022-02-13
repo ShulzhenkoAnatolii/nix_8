@@ -137,6 +137,15 @@ public class AccountServiceImpl implements AccountService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public DataTableResponse<Account> findAllAccount(DataTableRequest request) {
+        DataTableResponse<Account> dataTableResponse = accountDao.findAllAccount();
+        long count = accountDao.count();
+        WebResponseUtil.initDataTableResponse(request, dataTableResponse, count);
+        LOGGER_INFO.info("findAllUsers request, " + dataTableResponse);
+        return dataTableResponse;
+    }
 }
 
 

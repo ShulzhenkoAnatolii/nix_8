@@ -10,6 +10,7 @@ import ua.com.alevel.exception.MethodArgumentNotValidException;
 import ua.com.alevel.facade.AccountFacade;
 import ua.com.alevel.facade.TransactionFacade;
 import ua.com.alevel.facade.UserFacade;
+import ua.com.alevel.persistence.dao.AccountDao;
 import ua.com.alevel.view.dto.request.TransactionRequestDto;
 
 @Controller
@@ -18,6 +19,14 @@ public class TransactionController extends BaseController {
 
     private final TransactionFacade transactionFacade;
     private final AccountFacade accountFacade;
+    private final AccountDao accountDao;
+
+    public TransactionController(TransactionFacade transactionFacade, AccountFacade accountFacade, AccountDao accountDao) {
+        this.transactionFacade = transactionFacade;
+        this.accountFacade = accountFacade;
+        this.accountDao = accountDao;
+    }
+
     private final HeaderName[] transactionColumnNames = new HeaderName[]{
             new HeaderName("№", null, null),
             new HeaderName("Sender", "sender", "sender"),
@@ -27,11 +36,6 @@ public class TransactionController extends BaseController {
             new HeaderName("Recipient's wallet", null, null),
             new HeaderName("DATE", "date", "date"),
     };
-
-    public TransactionController(TransactionFacade transactionFacade, UserFacade userFacade, AccountFacade accountFacade) {
-        this.transactionFacade = transactionFacade;
-        this.accountFacade = accountFacade;
-    }
 
     @GetMapping
     public String findAll(Model model, WebRequest request) {
@@ -50,7 +54,7 @@ public class TransactionController extends BaseController {
     @GetMapping("/new")
     public String redirectToNewTransactionPage(Model model, WebRequest request) {
         model.addAttribute("transaction", new TransactionRequestDto());
-        model.addAttribute("accountsList", accountFacade.findAll(request));
+        model.addAttribute("accountsList", accountFacade.findAllAccount(request));
         return "pages/transactions/transaction_new";
     }
 
