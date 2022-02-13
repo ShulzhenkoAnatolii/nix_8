@@ -78,4 +78,14 @@ public class DataTableResponse<E extends BaseEntity> {
     public void setOrder(String order) {
         this.order = order;
     }
+
+    @Override
+    public String toString() {
+        return "DataTableResponse{" +
+                "currentPage=" + currentPage +
+                ", currentSize=" + currentSize +
+                ", sort='" + sort + '\'' +
+                ", order='" + order + '\'' +
+                '}';
+    }
 }
